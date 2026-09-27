@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/osparking/ts_miniproject/issues"
   },
-  "homepage": "https://github.com/osparking/ts_miniproject#readme"
+  "homepage": "https://github.com/osparking/ts_miniproject#readme",
+  "dependencies": {
+    "lite-server": "^2.6.1"
+  }
 }
