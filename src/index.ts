@@ -3,8 +3,24 @@ const lengthOfString = (variable as string).length;
 
 const jobinput = document.getElementById("todojob")! as HTMLInputElement;
 const btn = document.getElementById("btn")! as HTMLButtonElement;
-btn.addEventListener("click", () => {
-    alert(jobinput.value);
-    (<HTMLInputElement>jobinput).value = "";
-})
+
+// const form = document.querySelector("#todoform"); // form == element
+const formtodo = document.querySelector("form")!; // formtodo: HTMLFormElement | null
+
+// formtodo.addEventListener("submit", function(e) {
+//     e.preventDefault();
+//     console.log("제출됨!");
+// })
+
+function handleSubmit(e: SubmitEvent) {
+    e.preventDefault();
+    console.log("제출됨~");
+}
+
+formtodo.addEventListener("submit", handleSubmit )
+
+// btn.addEventListener("click", () => {
+//     alert(jobinput.value);
+//     (<HTMLInputElement>jobinput).value = "";
+// })
 // jobinput.value
