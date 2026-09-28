@@ -8,7 +8,16 @@ interface Todo {
   completed: boolean
 }
 
-const todo_list: Todo[] = [];
+const todo_list: Todo[] = readTodos();
+todo_list.forEach(createTodo);
+
+function readTodos():Todo[] {
+  const localTodos = localStorage.getItem("todos");
+  if (localTodos === null) {
+    return [];
+  }
+  return JSON.parse(localTodos);
+}
 
 function handleSubmit(e: SubmitEvent) {
   e.preventDefault();
@@ -34,3 +43,6 @@ function createTodo(element: Todo) {
 }
 
 formtodo.addEventListener("submit", handleSubmit);
+
+const storedTodos = localStorage.getItem("todos");
+console.log(storedTodos);
