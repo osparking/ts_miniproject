@@ -18,6 +18,7 @@ function handleSubmit(e: SubmitEvent) {
     completed: false
   }
   todo_list.push(todoElement);
+  localStorage.setItem("todos", JSON.stringify(todo_list));
   createTodo(todoElement);
 
   jobinput.value = "";
