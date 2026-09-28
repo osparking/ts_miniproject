@@ -6,16 +6,21 @@ const btn = document.getElementById("btn")! as HTMLButtonElement;
 
 // const form = document.querySelector("#todoform"); // form == element
 const formtodo = document.querySelector("form")!; // formtodo: HTMLFormElement | null
+const todolist = document.querySelector("#todolist");
 
+function handleSubmit(e: SubmitEvent) {
+    e.preventDefault();
+    console.log(jobinput.value);
+    const item = document.createElement("LI");
+    item.append(jobinput.value);
+    todolist?.append(item);
+    jobinput.value = "";
+}
 // formtodo.addEventListener("submit", function(e) {
 //     e.preventDefault();
 //     console.log("제출됨!");
 // })
 
-function handleSubmit(e: SubmitEvent) {
-    e.preventDefault();
-    console.log("제출됨~");
-}
 
 formtodo.addEventListener("submit", handleSubmit )
 
