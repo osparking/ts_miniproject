@@ -1,34 +1,35 @@
-let variable: unknown = "12345";
-const lengthOfString = (variable as string).length;
-
 const jobinput = document.getElementById("todojob")! as HTMLInputElement;
 const btn = document.getElementById("btn")! as HTMLButtonElement;
-
-// const form = document.querySelector("#todoform"); // form == element
 const formtodo = document.querySelector("form")!; // formtodo: HTMLFormElement | null
 const todolist = document.querySelector("#todolist")!;
 
+interface Todo {
+  task: string,
+  completed: boolean
+}
+
+const todo_list: Todo[] = [];
+
 function handleSubmit(e: SubmitEvent) {
   e.preventDefault();
-  const item = document.createElement("LI");
-  item.append(jobinput.value);
 
-  const checkbox = document.createElement("INPUT") as HTMLInputElement;
-  checkbox.type = "checkbox";
-  item.append(checkbox);
+  const todoElement: Todo = {
+    task: jobinput.value,
+    completed: false
+  }
+  todo_list.push(todoElement);
+  createTodo(todoElement);
 
-  todolist.append(item);
   jobinput.value = "";
 }
-// formtodo.addEventListener("submit", function(e) {
-//     e.preventDefault();
-//     console.log("제출됨!");
-// })
+
+function createTodo(element: Todo) {
+  const item = document.createElement("LI");
+  const checkbox = document.createElement("INPUT") as HTMLInputElement;
+  checkbox.type = "checkbox";
+  item.append(element.task);
+  item.append(checkbox);
+  todolist.append(item);
+}
 
 formtodo.addEventListener("submit", handleSubmit);
-
-// btn.addEventListener("click", () => {
-//     alert(jobinput.value);
-//     (<HTMLInputElement>jobinput).value = "";
-// })
-// jobinput.value
